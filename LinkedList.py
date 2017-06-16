@@ -1,15 +1,20 @@
+'''
+Created: April 17th, 2017
+Author: Julia Garbuz
+'''
+
 class Node():
-    
+
     ## Node is element of linked list structure defined below
     ## Two attributes are "data' of node and link to next node
     ## (data for current node in this application will be edge object)
-    
+
     def __init__(self, nodeData, nextNode = None):
         self.__data = nodeData
         self.__next = nextNode
 
     ## Getters/setters for all attributes
-        
+
     def getData(self):
         return self.__data
     def setData(self, newData):
@@ -27,7 +32,7 @@ class NodeList():
     ## Node list structure built from Nodes
     ## Head attribute holds on to header Node of NodeList
     ## Tail attribute holds on to last not None-value Node
-    
+
     def __init__(self, headerNode):
         self.__head = headerNode
         self.__tail = headerNode
@@ -39,7 +44,7 @@ class NodeList():
             self.__length += 1
 
     ## Getter methods (getCurrent returns tail node)
-            
+
     def getHead(self):
         return self.__head
     def getCurrent(self):
@@ -49,13 +54,13 @@ class NodeList():
 
     def add(self, node):
         ## Adds node to NodeList
-    
+
         ## If currently only one element in list (head = tail)
-        ## assignment done slightly differently 
+        ## assignment done slightly differently
         if self.__tail == self.__head:
             self.__head.setNext(node)
             self.__tail = node
-            
+
         else:
             self.__tail.setNext(node)
             self.__tail = self.__tail.getNext()

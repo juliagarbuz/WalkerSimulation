@@ -1,3 +1,8 @@
+'''
+Created: April 17th, 2017
+Author: Julia Garbuz
+'''
+
 from LinkedList import Node
 from LinkedList import NodeList
 
@@ -6,7 +11,7 @@ class Edge():
     ## Edge object represents a (directed) connection between two vertices
     ## Attributes include start vertex, destination vertex, and weight
     ## (weight is equivalent to length in this application)
-    
+
     def __init__(self, initSource, initDest, initWeight):
         self.__startVertex = initSource
         self.__endVertex = initDest
@@ -39,9 +44,9 @@ class Graph():
     ## Graph object is a Adjacency list representation of a directed graph
     ## In AdjList list, indices correlate to vertex number
     ## At each vertex a linked list stores all edges exiting that vertex
-    
+
     def __init__(self, numVertices = 10):
-        ## List sets all vertices initially to "None", then edges are added 
+        ## List sets all vertices initially to "None", then edges are added
         ## to the corresponding index using setVertex or addEdge
         self.__AdjList = []
         for i in range(numVertices+1):  # Vertices will start from index 1
@@ -58,21 +63,21 @@ class Graph():
     def getEdges(self, vertex):
         ## Returns linked list of edges at given vertex
         return self.__AdjList[vertex]
-            
+
     def addEdge(self, edge):
         ## Single edge object passed in, vertex determined from attributes of
         ## edge. List expanded if needed. Edge added as node to linked list
         vertex = edge.getStartVertex()
         if vertex + 1 > len(self.__AdjList):
             self.expandList(vertex)
-            
+
         if self.__AdjList[vertex] == None:
             ## If no nodes have yet been added to vertex, edge set as head
             ## of linked list at vertex
             self.__AdjList[vertex] = NodeList(Node(edge))
         else:
             self.__AdjList[vertex].add(Node(edge))
-            
+
     def getOutDegree(self, vertex):
         ## out degree is number of edges leaving given vertex
         if self.__AdjList[vertex] == None:
@@ -92,6 +97,5 @@ class Graph():
         s = ""
         for i in range(1,len(self.__AdjList)):
             if self.__AdjList[i] != None:
-                s += "\n[ VERTEX " + str(i) + " ]" + "\n" + str(self.__AdjList[i]) 
-        return s        
-        
+                s += "\n[ VERTEX " + str(i) + " ]" + "\n" + str(self.__AdjList[i])
+        return s

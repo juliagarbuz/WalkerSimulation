@@ -1,3 +1,8 @@
+'''
+Created: April 17th, 2017
+Author: Julia Garbuz
+'''
+
 from LinkedList import Node
 from LinkedList import NodeList
 
@@ -25,7 +30,7 @@ def constructFromInput():
     print("\nVERTEX: 1")
     print("\tEDGE (to, weight): 2, 3")
     print("****************************************************\n")
-    
+
     adjList = Graph()
 
     vertex = input("VERTEX: ")
@@ -39,7 +44,7 @@ def constructFromInput():
             adjList.addEdge(edge)
             edge = input("\tEDGE (to, weight): ")
         vertex = input("VERTEX: ")
-        
+
     return adjList
 
 def printAdjList(lis):
@@ -91,12 +96,12 @@ def simulation(graph, trials = 100):
     validStarts = graph.getValidStartVertices()
 
     ## Initialize walker at randomly selected vertex
-    walker = RandomWalker() 
-    
+    walker = RandomWalker()
+
     maxSteps = -9999
     minSteps = 9999
     sumSteps = 0
-    
+
     for i in range(0, trials):
         ## set walker to new start vertex and distWalked to 0
         rand_idx = random.randint(0, len(validStarts)-1)
@@ -109,7 +114,7 @@ def simulation(graph, trials = 100):
         elif steps < minSteps:
             minSteps = steps
         sumSteps += steps
-        
+
     avgSteps = sumSteps/trials
     print("For a simulation of", trials, "trials:")
     print("\tMaximum number of steps:", maxSteps)
@@ -120,7 +125,7 @@ def main():
     print("WELCOME TO THE RANDOM WALK SIMULATION")
     print("\nWould you like to (1) build your own graph\n" + \
          "or (2) use the graph from the text file?")
-    
+
     opt = 0
     while not (opt in [1, 2]):
         opt = int(input("--> "))
